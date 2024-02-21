@@ -1,11 +1,15 @@
 import Header from './components/Header'
+import SideMenu from './components/SideMenu'
 import Videos from './components/Videos'
 
 function App() {
   return (
     <>
       <Header />
-      <Videos />
+      <div className="flex">
+        <SideMenu />
+        <Videos />
+      </div>
     </>
   )
 }
