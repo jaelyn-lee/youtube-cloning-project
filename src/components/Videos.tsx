@@ -1,36 +1,37 @@
-// import Card from './UI/Card'
-
-import { useEffect, useState } from 'react'
 import Card from './UI/Card'
+import { useQuery } from '@tanstack/react-query'
 import { Video } from './Video'
 
 export default function Videos() {
-  const [items, setItems] = useState<Video[]>([])
-
-  useEffect(() => {
-    const fetchedData = async () => {
-      const fetchedData = await fetch('/data/leo-woodall.json').then((res) =>
+  const {
+    data: videos,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['videos'],
+    queryFn: async () => {
+      const res = await fetch('/data/leo-woodall.json').then((res) =>
         res.json()
       )
-      const data = fetchedData.items
-      setItems(data)
-      console.log('data is here', data)
-    }
-    fetchedData()
-  }, [])
+      return res.items
+    },
+  })
+
+  if (isLoading) return <div>Loading ...</div>
+  if (isError) return <div>Error!</div>
 
   return (
     <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
-      {items.map((item) => (
+      {videos.map((video: Video) => (
         <Card
-          thumbnail={item.snippet.thumbnails.high.url}
+          thumbnail={video.snippet.thumbnails.high.url}
           channelImg="/images/leo.jpeg"
-          title={item.snippet.title}
-          channelName={item.snippet.channelTitle}
+          title={video.snippet.title}
+          channelName={video.snippet.channelTitle}
           views={500}
-          date={item.snippet.publishTime}
-          key={item.id.videoId}
-          id={item.id.videoId}
+          date={video.snippet.publishTime}
+          key={video.id.videoId}
+          id={video.id.videoId}
         />
       ))}
     </div>

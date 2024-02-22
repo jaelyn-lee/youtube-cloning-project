@@ -16,11 +16,13 @@ export default function Header({ toggleSideMenu }: HeaderProps) {
             className="cursor-pointer"
             onClick={toggleSideMenu}
           />
-          <img
-            src="/images/yt_logo_rgb_dark.png"
-            alt="Youtube logo"
-            className="w-[90px] h-[20px] cursor-pointer"
-          />
+          <a href="/">
+            <img
+              src="/images/yt_logo_rgb_dark.png"
+              alt="Youtube logo"
+              className="w-[90px] h-[20px] cursor-pointer"
+            />
+          </a>
         </div>
         <div className="flex items-center justify-between border-solid border-almostBlack border-4 rounded-xl w-5/12 h-10 gap-2">
           <div className="flex w-full px-4">
