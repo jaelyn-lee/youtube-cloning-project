@@ -13,7 +13,6 @@ export default function Card(props: YoutubeData) {
   const navigate = useNavigate()
   const handleClick = () => {
     const id = props.id
-    console.log(id)
     navigate(`/video/${id}`)
   }
 
