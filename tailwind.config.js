@@ -7,6 +7,7 @@ export default {
         red: '#FF0000',
         white: '#FFFFFF',
         almostBlack: '#282828',
+        textSecondary: '#aaa',
       },
     },
   },
