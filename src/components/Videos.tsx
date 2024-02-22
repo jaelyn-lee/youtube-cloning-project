@@ -30,6 +30,7 @@ export default function Videos() {
           views={500}
           date={item.snippet.publishTime}
           key={item.id.videoId}
+          id={item.id.videoId}
         />
       ))}
     </div>

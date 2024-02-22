@@ -1,14 +1,21 @@
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoIosSearch } from 'react-icons/io'
-import { useState } from 'react'
 
-export default function Header() {
-  const [toggled, setToggled] = useState(false)
+type HeaderProps = {
+  toggleSideMenu: () => void
+}
+
+export default function Header({ toggleSideMenu }: HeaderProps) {
   return (
     <>
       <div className="flex items-center justify-between w-full px-3 h-14">
         <div className="flex items-center gap-2">
-          <RxHamburgerMenu width={24} height={24} className="cursor-pointer" />
+          <RxHamburgerMenu
+            width={24}
+            height={24}
+            className="cursor-pointer"
+            onClick={toggleSideMenu}
+          />
           <img
             src="/images/yt_logo_rgb_dark.png"
             alt="Youtube logo"

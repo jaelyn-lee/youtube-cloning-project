@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'
+
 type YoutubeData = {
   thumbnail: string
   channelImg: string
@@ -5,14 +7,23 @@ type YoutubeData = {
   channelName: string
   views: number
   date: string
+  id: string
 }
 export default function Card(props: YoutubeData) {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    const id = props.id
+    console.log(id)
+    navigate(`/video/${id}`)
+  }
+
   return (
     <section>
       <img
         src={props.thumbnail}
         alt="Thumbnail"
-        className="lg:w-[362.48px] lg:h-[203.89px]"
+        className="lg:w-[362.48px] lg:h-[203.89px] cursor-pointer"
+        onClick={handleClick}
       />
       <div>
         <div className="flex">

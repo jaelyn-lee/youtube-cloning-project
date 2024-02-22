@@ -1,14 +1,21 @@
+import { useState } from 'react'
 import Header from './components/Header'
 import SideMenu from './components/SideMenu'
-import Videos from './components/Videos'
+import { Outlet } from 'react-router-dom'
 
 function App() {
+  const [toggled, setToggled] = useState(false)
+
+  const toggleSideMenu = () => {
+    setToggled((prev) => !prev)
+  }
+
   return (
     <>
-      <Header />
+      <Header toggleSideMenu={toggleSideMenu} />
       <div className="flex">
-        <SideMenu />
-        <Videos />
+        <SideMenu toggled={toggled} />
+        <Outlet />
       </div>
     </>
   )
