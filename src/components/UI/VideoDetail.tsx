@@ -19,13 +19,12 @@ export default function VideoDetail() {
   const filteredVideo = videos.filter((video: Video) => video.id.videoId === id)
 
   return (
-    <div className="flex gap-2">
+    <div className="xl:flex gap-2">
       <div>
         <iframe
           id="ytplayer"
-          width="1184"
-          height="666"
           src={`https://www.youtube.com/embed/${id}`}
+          className="xl:w-[1184px] xl:h-[666px] sm:w-[817px] sm:h-[523px]"
         ></iframe>
         <div>
           <h1 className="text-xl">{filteredVideo[0].snippet.title}</h1>

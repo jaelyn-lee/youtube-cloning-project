@@ -4,7 +4,7 @@ import SideMenu from './components/SideMenu'
 import { Outlet } from 'react-router-dom'
 
 function App() {
-  const [toggled, setToggled] = useState(false)
+  const [toggled, setToggled] = useState(true)
 
   const toggleSideMenu = () => {
     setToggled((prev) => !prev)
