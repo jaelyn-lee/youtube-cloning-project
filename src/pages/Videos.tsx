@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Video } from '../components/Video'
 import Card from '../components/UI/Card'
-import axios from 'axios'
+import MockYoutube from '../api/mockYoutube'
 
 export default function Videos() {
   const { id } = useParams<{ id: string }>()
@@ -12,10 +12,9 @@ export default function Videos() {
     isError,
   } = useQuery({
     queryKey: ['videos', id],
-    queryFn: async () => {
-      return await axios
-        .get(`/data/${id ? 'leo-woodall' : 'most-popular'}.json`)
-        .then((res) => res.data.items)
+    queryFn: () => {
+      const youtube = new MockYoutube()
+      return youtube.search(id)
     },
     staleTime: 1000 * 60 * 5,
   })
