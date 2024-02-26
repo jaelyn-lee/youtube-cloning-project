@@ -7,6 +7,7 @@ export default class MockYoutube {
     return id ? this.#searchById(id) : this.#searchMostPopular()
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async #searchById(id) {
     return axios
       .get(`/data/leo-woodall.json`)
