@@ -2,7 +2,8 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Video } from '../components/Video'
 import Card from '../components/UI/Card'
-import MockYoutube from '../api/mockYoutube'
+// import MockYoutube from '../api/mockYoutube'
+import Youtube from '../api/youtube'
 
 export default function Videos() {
   const { id } = useParams<{ id: string }>()
@@ -13,7 +14,8 @@ export default function Videos() {
   } = useQuery({
     queryKey: ['videos', id],
     queryFn: () => {
-      const youtube = new MockYoutube()
+      // const youtube = new MockYoutube()
+      const youtube = new Youtube()
       return youtube.search(id)
     },
     staleTime: 1000 * 60 * 5,
