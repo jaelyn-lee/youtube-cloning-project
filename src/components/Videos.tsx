@@ -10,7 +10,7 @@ export default function Videos() {
   } = useQuery({
     queryKey: ['videos'],
     queryFn: async () => {
-      const res = await fetch('/data/leo-woodall.json').then((res) =>
+      const res = await fetch('/data/most-popular.json').then((res) =>
         res.json()
       )
       return res.items
@@ -38,3 +38,7 @@ export default function Videos() {
     </div>
   )
 }
+
+// `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=NZ&key=${
+//           import.meta.env.VITE_API_KEY
+//         }`
