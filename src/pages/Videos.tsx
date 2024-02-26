@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Video } from '../components/Video'
 import Card from '../components/UI/Card'
+import axios from 'axios'
 
 export default function Videos() {
   const { id } = useParams<{ id: string }>()
@@ -12,10 +13,9 @@ export default function Videos() {
   } = useQuery({
     queryKey: ['videos', id],
     queryFn: async () => {
-      const res = await fetch(
-        `/data/${id ? 'leo-woodall' : 'most-popular'}.json`
-      ).then((res) => res.json())
-      return res.items
+      return await axios
+        .get(`/data/${id ? 'leo-woodall' : 'most-popular'}.json`)
+        .then((res) => res.data.items)
     },
     staleTime: 1000 * 60 * 5,
   })
