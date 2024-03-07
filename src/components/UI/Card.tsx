@@ -1,4 +1,5 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { format } from 'timeago.js'
 
 type YoutubeData = {
   thumbnail: string
@@ -6,26 +7,22 @@ type YoutubeData = {
   title: string
   channelName: string
   views: number
-  date: string
-  id: string
+  publishAt: string
+  id?: string
 }
 export default function Card(props: YoutubeData) {
   const navigate = useNavigate()
   const handleClick = () => {
-    const id = props.id
-    navigate(`/video/${id}`)
+    navigate(`/videos/watch/${props.id}`, { state: props })
   }
 
   return (
-    <section>
-      <Link to={`/videos/${props.id}`}>
-        <img
-          src={props.thumbnail}
-          alt="Thumbnail"
-          className="lg:w-[362.48px] lg:h-[203.89px] cursor-pointer"
-          onClick={handleClick}
-        />
-      </Link>
+    <li onClick={handleClick}>
+      <img
+        src={props.thumbnail}
+        alt="Thumbnail"
+        className="lg:w-[362.48px] lg:h-[203.89px] cursor-pointer"
+      />
       <div>
         <div className="flex gap-1">
           <img
@@ -37,9 +34,10 @@ export default function Card(props: YoutubeData) {
         </div>
         <p className="font-bold text-gray-400">{props.channelName}</p>
         <p>
-          <span>{props.views} views</span> * <span>{props.date} ago</span>
+          <span>{props.views} views</span> *{' '}
+          <span>{format(props.publishAt)}</span>
         </p>
       </div>
-    </section>
+    </li>
   )
 }

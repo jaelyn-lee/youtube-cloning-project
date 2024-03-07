@@ -1,5 +1,5 @@
 type YoutubeData = {
-  thumbnail: string
+  thumbnail?: string
   channelImg: string
   title: string
   channelName: string
@@ -8,7 +8,7 @@ type YoutubeData = {
   id: string
 }
 
-export default function SideCard(props: YoutubeData) {
+export default function RelatedVideos(props: YoutubeData) {
   return (
     <section className="w-[402px] h-[94px] flex">
       <div>

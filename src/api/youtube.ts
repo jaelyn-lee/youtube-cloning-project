@@ -5,7 +5,7 @@ export default class Youtube {
 
   constructor() {
     this.httpClient = axios.create({
-      baseURL: 'https://youtube.googleapis.com/youtube/v3/',
+      baseURL: import.meta.env.VITE_BASE_URL,
       params: {
         key: import.meta.env.VITE_API_KEY,
       },
@@ -14,6 +14,12 @@ export default class Youtube {
 
   async search(id: string | undefined) {
     return id ? this.#searchById(id) : this.#searchMostPopular()
+  }
+
+  async channelImageURL(id: string) {
+    return this.httpClient
+      .channels({ params: { part: 'snippet', id } })
+      .then((res) => res.data.items[0].snippet.thumbnails.default.url)
   }
 
   async #searchById(id: unknown) {

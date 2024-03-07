@@ -8,9 +8,9 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom'
-import VideoDetail from './pages/VideoDetail.tsx'
+import VideoDetailPage from './pages/VideoDetailPage.tsx'
 import Error from './pages/Error.tsx'
-import Videos from './pages/Videos.tsx'
+import Videos from './pages/VideosPage.tsx'
 
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 const router = createBrowserRouter(
@@ -19,7 +19,7 @@ const router = createBrowserRouter(
       <Route index element={<Videos />} />
       <Route path="videos" element={<Videos />} />
       <Route path="videos/:id" element={<Videos />} />
-      <Route path="videos/watch/:id" element={<VideoDetail />} />
+      <Route path="videos/watch/:id" element={<VideoDetailPage />} />
     </Route>
   )
 )

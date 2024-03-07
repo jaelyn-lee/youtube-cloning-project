@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { Video } from '../components/Video'
 import Card from '../components/UI/Card'
-// import MockYoutube from '../api/mockYoutube'
 import Youtube from '../api/youtube'
 
 export default function Videos() {
@@ -14,7 +13,6 @@ export default function Videos() {
   } = useQuery({
     queryKey: ['videos', id],
     queryFn: () => {
-      // const youtube = new MockYoutube()
       const youtube = new Youtube()
       return youtube.search(id)
     },
@@ -26,7 +24,6 @@ export default function Videos() {
 
   return (
     <>
-      <div>Videos {id ? `🔍${id}` : `❤️‍🔥`}</div>
       <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
         {videos.map((video: Video) => (
           <Card
@@ -35,9 +32,9 @@ export default function Videos() {
             title={video.snippet.title}
             channelName={video.snippet.channelTitle}
             views={500}
-            date={video.snippet.publishTime}
+            publishAt={video.snippet.publishedAt}
             key={video.id.videoId}
-            id={video.id.videoId}
+            id={video.id}
           />
         ))}
       </div>

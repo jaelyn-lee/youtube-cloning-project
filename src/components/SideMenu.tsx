@@ -2,19 +2,22 @@ import { GoHomeFill } from 'react-icons/go'
 import { SiYoutubeshorts } from 'react-icons/si'
 import { MdSubscriptions } from 'react-icons/md'
 import { BiSolidVideos } from 'react-icons/bi'
+import { useNavigate } from 'react-router-dom'
 
 type SideMenuProps = {
   toggled: boolean
 }
 
 export default function SideMenu({ toggled }: SideMenuProps) {
-  console.log('toggle menu: ', toggled)
-
+  const navigate = useNavigate()
   return (
     <>
       {toggled && (
         <div className="flex flex-col gap-12 pt-10">
-          <div className="flex flex-col place-items-center">
+          <div
+            className="flex flex-col place-items-center"
+            onClick={() => navigate(`/`)}
+          >
             <GoHomeFill className="text-2xl" />
             <span className="text-xs">Home</span>
           </div>
