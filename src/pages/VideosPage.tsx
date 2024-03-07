@@ -31,6 +31,7 @@ export default function Videos() {
             channelImg="/images/leo.jpeg"
             title={video.snippet.title}
             channelName={video.snippet.channelTitle}
+            channelId={video.snippet.channelId}
             views={500}
             publishAt={video.snippet.publishedAt}
             key={video.id.videoId}

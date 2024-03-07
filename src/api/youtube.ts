@@ -17,9 +17,7 @@ export default class Youtube {
   }
 
   async channelImageURL(id: string) {
-    return this.httpClient
-      .channels({ params: { part: 'snippet', id } })
-      .then((res) => res.data.items[0].snippet.thumbnails.default.url)
+    return this.#channels(id)
   }
 
   async #searchById(id: unknown) {
@@ -51,5 +49,16 @@ export default class Youtube {
         },
       })
       .then((res) => res.data.items)
+  }
+
+  async #channels(id: string) {
+    return this.httpClient
+      .get('channels', {
+        params: {
+          part: 'snippet',
+          id,
+        },
+      })
+      .then((res) => res.data.items[0].snippet.thumnails.default.url)
   }
 }

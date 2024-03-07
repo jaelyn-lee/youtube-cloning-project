@@ -8,6 +8,7 @@ import ChannelInfo from './ChannelInfo'
 type VideoDetail = {
   channelImg: string
   channelName: string
+  channelId: string
   id: string
   publishAt: string
   thumbnail?: string
@@ -26,7 +27,7 @@ export default function VideoDetail(props: VideoDetail) {
         ></iframe>
         <div>
           <h1 className="text-xl">{props.title}</h1>
-          <ChannelInfo id={props.id} />
+          <ChannelInfo id={props.channelId} />
           <div className="flex items-center justify-between mt-3">
             <div className="flex gap-3">
               <img

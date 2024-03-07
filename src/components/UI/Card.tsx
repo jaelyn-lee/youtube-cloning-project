@@ -6,6 +6,7 @@ type YoutubeData = {
   channelImg: string
   title: string
   channelName: string
+  channelId: string
   views: number
   publishAt: string
   id?: string
