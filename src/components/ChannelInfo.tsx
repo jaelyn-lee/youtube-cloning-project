@@ -6,11 +6,7 @@ type channelId = {
 }
 
 export default function ChannelInfo({ id }: channelId) {
-  const {
-    data: url,
-    isLoading,
-    isError,
-  } = useQuery({
+  const { data: url } = useQuery({
     queryKey: ['channel', id],
     queryFn: () => {
       const youtube = new Youtube()
@@ -18,9 +14,9 @@ export default function ChannelInfo({ id }: channelId) {
     },
     staleTime: 1000 * 60 * 5,
   })
-  console.log('channel id: ', id)
-
-  console.log('channel url: ', url)
-
-  return <div>{url && <img src={url} alt="url" />}</div>
+  return (
+    <div>
+      {url && <img className="rounded-full w-9 h-9" src={url} alt="url" />}
+    </div>
+  )
 }

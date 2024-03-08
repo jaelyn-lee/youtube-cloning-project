@@ -20,6 +20,10 @@ export default class Youtube {
     return this.#channels(id)
   }
 
+  // async relatedVideos(id: string) {
+
+  // }
+
   async #searchById(id: unknown) {
     return this.httpClient
       .get('search', {
@@ -59,6 +63,6 @@ export default class Youtube {
           id,
         },
       })
-      .then((res) => res.data.items[0].snippet.thumnails.default.url)
+      .then((res) => res.data.items[0].snippet.thumbnails.default.url)
   }
 }

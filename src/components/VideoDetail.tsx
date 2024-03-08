@@ -1,9 +1,9 @@
 // import { useParams } from 'react-router-dom'
 // import { useQuery } from '@tanstack/react-query'
 // import { Video } from './Video'
-// import SideCard from './UI/SideCard'
 
 import ChannelInfo from './ChannelInfo'
+// import RelatedVideos from './UI/RelatedVideos'
 
 type VideoDetail = {
   channelImg: string
@@ -27,14 +27,9 @@ export default function VideoDetail(props: VideoDetail) {
         ></iframe>
         <div>
           <h1 className="text-xl">{props.title}</h1>
-          <ChannelInfo id={props.channelId} />
           <div className="flex items-center justify-between mt-3">
             <div className="flex gap-3">
-              <img
-                src="/images/leo.jpeg"
-                alt="channelImg"
-                className="w-9 h-9 rounded-full"
-              />
+              <ChannelInfo id={props.channelId} />
               <div>
                 <h2 className="text-base">{props.channelName}</h2>
                 <p className="text-xs">500 subscribers</p>
@@ -65,7 +60,7 @@ export default function VideoDetail(props: VideoDetail) {
       </div>
       {/* <div className="flex flex-col">
         {videos.map((video: Video) => (
-          <SideCard
+          <RelatedVideos
             thumbnail={video.snippet.thumbnails.high.url}
             channelImg="/images/leo.jpeg"
             title={video.snippet.title}
